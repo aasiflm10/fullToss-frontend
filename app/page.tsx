@@ -6,6 +6,7 @@ import { ItemsTrayComponent, Product } from "./components/ItemsTrayComponent";
 import { TopSelling } from "./components/TopSelling";
 import { Footer } from "./components/Footer";
 import { BrandsTray } from "./components/BrandsTray";
+import { OurHappyCustomers } from "./components/OurHappyCustomers";
 
 export default function Home() {
   const products: Product[] = [];
@@ -52,6 +53,7 @@ export default function Home() {
       <ItemsTrayComponent name="New Arrivals" list={products} />
       <ItemsTrayComponent name="Top Selling" list={products} />
       </div>
+      <OurHappyCustomers/>
       <Footer />
     </div>
   );
