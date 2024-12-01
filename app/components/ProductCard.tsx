@@ -22,7 +22,7 @@ export function ProductCard({
       <div className="">
         <h1 className="font-bold  text-xl">{productName}</h1>
         <h1>{stars}</h1>
-        <h1>{price}</h1>
+        <h1 className="font-bold">{price}</h1>
       </div>
     </div>
   );

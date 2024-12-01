@@ -52,8 +52,8 @@ export function ItemsTrayComponent({
   ];
 
   return (
-    <div>
-      <h1>{name}</h1>
+    <div className="lg:px-[100px] px-4 space-y-8">
+      <h1 className="flex justify-center text-5xl font-bold">{name}</h1>
       <MultiCarousel products={products}/>
     </div>
   );

@@ -5,19 +5,20 @@ import { Image } from "./components/Image";
 import { ItemsTrayComponent, Product } from "./components/ItemsTrayComponent";
 import { TopSelling } from "./components/TopSelling";
 import { Footer } from "./components/Footer";
+import { BrandsTray } from "./components/BrandsTray";
 
 export default function Home() {
   const products: Product[] = [];
   return (
-    <div className="lg:px-[100px] px-4">
+    <div className="">
       <div>
         <TopBar name="Shop.io" />
       </div>
 
-      <div className="grid grid-cols-12">
-        <div className="lg:col-span-6 col-span-12">
-          <h1>FIND CLOTHES THAT MATCH YOUR STYLE</h1>
-          <h1>
+      <div className="grid grid-cols-12 bg-gray-100 p-4 lg:px-[100px] px-4">
+        <div className="lg:col-span-6 col-span-12 space-y-8">
+          <h1 className="text-6xl">FIND CLOTHES THAT MATCH YOUR STYLE</h1>
+          <h1 className="text-base">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type
@@ -25,8 +26,8 @@ export default function Home() {
             only five centuries, but also the leap into electronic typesetting,
             remaining essentially unchanged
           </h1>
-          <Button buttonText="Buy Now" className="" />
-          <div className="flex">
+          <Button buttonText="Buy Now" className="py-4 bg-black text-white rounded-2xl w-full md:w-[210px] text-base" />
+          <div className="flex md:space-x-16 space-x-8">
             <HeadingAndSubText
               firstHeading="200+"
               subtext="Internation Brands"
@@ -46,8 +47,11 @@ export default function Home() {
           <Image src={""} className="" />
         </div>
       </div>
+      <BrandsTray/>
+      <div className="mt-16 space-y-8">
       <ItemsTrayComponent name="New Arrivals" list={products} />
       <ItemsTrayComponent name="Top Selling" list={products} />
+      </div>
       <Footer />
     </div>
   );
