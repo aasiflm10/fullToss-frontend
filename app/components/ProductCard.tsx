@@ -14,11 +14,16 @@ export function ProductCard({
   price: string;
 }) {
   return (
-    <div>
-      <img src={src} className={twMerge("object-cover", className)} />
-      <h1>{productName}</h1>
-      <h1>{stars}</h1>
-      <h1>{price}</h1>
+    <div className="space-y-4">
+      <img
+        src={src}
+        className={twMerge("object-cover rounded-md", className)}
+      />
+      <div className="">
+        <h1 className="font-bold  text-xl">{productName}</h1>
+        <h1>{stars}</h1>
+        <h1>{price}</h1>
+      </div>
     </div>
   );
 }
