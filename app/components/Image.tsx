@@ -4,7 +4,7 @@ export function Image({ className, src }: { className: string; src: string }) {
   return (
     <div>
       <img
-        className={twMerge(className, "object-cover w-full h-full")}
+        className={twMerge(className, "object-cover w-full ")}
         src={
           src
             ? src
