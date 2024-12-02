@@ -1,18 +1,19 @@
-"use client"
+"use client";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { ProductCard } from "./ProductCard";
+import { Product } from "./ItemsTrayComponent";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-interface Product {
-  id: number;
-  src: string;
-  productName: string;
-  stars: string;
-  price: string;
-}
-
-export function MultiCarousel({ products }: { products: Product[] }) {
+export function MultiCarousel({
+  products,
+  loading,
+}: {
+  products: Product[];
+  loading: boolean;
+}) {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -28,7 +29,19 @@ export function MultiCarousel({ products }: { products: Product[] }) {
     },
   };
 
-  return (
+  return loading ? (
+    <div className="flex flex-wrap h-80 w-full space-x-4 md:space-x-4">
+  <div className="flex-1 h-80 w-full md:w-1/3">
+    <Skeleton height="100%" width="100%" />
+  </div>
+  <div className="flex-1 h-80 w-full md:w-1/3 hidden md:block">
+    <Skeleton height="100%" width="100%" />
+  </div>
+  <div className="flex-1 h-80 w-full md:w-1/3 hidden md:block">
+    <Skeleton height="100%" width="100%" />
+  </div>
+</div>
+  ) : (
     <Carousel
       swipeable={true}
       draggable={true}
@@ -41,16 +54,16 @@ export function MultiCarousel({ products }: { products: Product[] }) {
       transitionDuration={500}
       containerClass="carousel-container"
       dotListClass="custom-dot-list-style"
-
       itemClass="px-4 transition-all duration-500 ease-in-out" // Smooth spacing adjustment
     >
-      {products.map((product) => (
+      {products?.map((product) => (
         <ProductCard
           key={product.id}
           className="h-64 w-full"
-          src={product.src}
-          productName={product.productName}
-          stars={product.stars}
+          imageUrl={product.imageUrl}
+          name={product.name}
+          stars={"⭐⭐⭐⭐"}
+          description={product.description}
           price={product.price}
         />
       ))}

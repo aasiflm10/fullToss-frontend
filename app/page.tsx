@@ -1,3 +1,4 @@
+"use client";
 import { TopBar } from "./components/Topbar";
 import { Button } from "./components/Button";
 import { HeadingAndSubText } from "./components/HeadingAndSubText";
@@ -7,9 +8,49 @@ import { TopSelling } from "./components/TopSelling";
 import { Footer } from "./components/Footer";
 import { BrandsTray } from "./components/BrandsTray";
 import { OurHappyCustomers } from "./components/OurHappyCustomers";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { BACKEND_URL } from "@/config";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
+interface ProductsResponse {
+  message: string;
+  products: Product[];
+}
 
 export default function Home() {
-  const products: Product[] = [];
+  // const products: Product[] = [];
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  async function getProducts() {
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzMyOTg1NDcyfQ.fh3ohpiQ10V9whL7DvHCi7B5uvgMS2CNqRLd_qnQKak";
+    try {
+      const res = await axios.get<ProductsResponse>(`${BACKEND_URL}/products`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("API Response:", res.data);
+
+      // Update state
+
+      setProducts(res.data.products);
+      setLoading(false);
+    } catch (e) {
+      console.error("Error fetching products:", e);
+    }
+  }
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  useEffect(() => {
+    console.log("Updated Products:", products);
+  }, [products]);
+
   return (
     <div className="">
       <div>
@@ -27,7 +68,10 @@ export default function Home() {
             only five centuries, but also the leap into electronic typesetting,
             remaining essentially unchanged
           </h1>
-          <Button buttonText="Buy Now" className="py-4 bg-black text-white rounded-2xl w-full md:w-[210px] text-base" />
+          <Button
+            buttonText="Buy Now"
+            className="py-4 bg-black text-white rounded-2xl w-full md:w-[210px] text-base"
+          />
           <div className="flex md:space-x-16 space-x-8">
             <HeadingAndSubText
               firstHeading="200+"
@@ -48,12 +92,20 @@ export default function Home() {
           <Image src={""} className="" />
         </div>
       </div>
-      <BrandsTray/>
+      <BrandsTray />
       <div className="mt-16 space-y-8">
-      <ItemsTrayComponent name="New Arrivals" list={products} />
-      <ItemsTrayComponent name="Top Selling" list={products} />
+        <ItemsTrayComponent
+          name="New Arrivals"
+          products={products}
+          loading={loading}
+        />
+        <ItemsTrayComponent
+          name="Top Selling"
+          products={products}
+          loading={loading}
+        />
       </div>
-      <OurHappyCustomers/>
+      <OurHappyCustomers />
       <Footer />
     </div>
   );
