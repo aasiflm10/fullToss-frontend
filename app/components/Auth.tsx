@@ -40,6 +40,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
       localStorage.setItem("team", data.user.assignedTeam);
       router.push("/");
     } catch (e) {
+      console.log(e);
       alert("Error while signing up");
       // alert the user here that the request failed
     }
