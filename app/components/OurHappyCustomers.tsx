@@ -1,4 +1,3 @@
-import { MultiCarousel } from "./MultiCarousel";
 import { ReviewCarousel } from "./ReviewsCarousel";
 
 export function OurHappyCustomers() {

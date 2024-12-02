@@ -4,7 +4,6 @@ import { HM } from "./icons/HM";
 import { Louis } from "./icons/Louis";
 import { NewBalance } from "./icons/NewBalance";
 import { Nike } from "./icons/Nike";
-import { SimpleHeadingComponent } from "./SimpleHeadingComponent";
 
 export function BrandsTray() {
   return (

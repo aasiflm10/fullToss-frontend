@@ -4,15 +4,12 @@ import { Button } from "./components/Button";
 import { HeadingAndSubText } from "./components/HeadingAndSubText";
 import { Image } from "./components/Image";
 import { ItemsTrayComponent, Product } from "./components/ItemsTrayComponent";
-import { TopSelling } from "./components/TopSelling";
 import { Footer } from "./components/Footer";
 import { BrandsTray } from "./components/BrandsTray";
 import { OurHappyCustomers } from "./components/OurHappyCustomers";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "@/config";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 
 interface ProductsResponse {
   message: string;
@@ -62,7 +59,7 @@ export default function Home() {
           <h1 className="text-6xl">FIND CLOTHES THAT MATCH YOUR STYLE</h1>
           <h1 className="text-base">
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
+            industry. Lorem Ipsum has been the industry&apos;s standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book. It has survived not
             only five centuries, but also the leap into electronic typesetting,

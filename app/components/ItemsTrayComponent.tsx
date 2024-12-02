@@ -1,5 +1,4 @@
 import { MultiCarousel } from "./MultiCarousel";
-import { ProductCard } from "./ProductCard";
 
 export interface Product {
   id: number;
