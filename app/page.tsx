@@ -28,15 +28,24 @@ const themes = [
   "GT",
   "LSG",
 ];
+
+const ISSERVER = typeof window === "undefined";
+
 export default function Home() {
-  const team = localStorage.getItem("team");
+  let team = "";
+  if (!ISSERVER) {
+    team = localStorage.getItem("team") || "";
+  }
   const [theme, setTheme] = useState<string>(team as string);
 
   // const products: Product[] = [];
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   async function getProducts() {
-    const token = localStorage.getItem("token");
+    let token: string = "";
+    if (!ISSERVER) {
+      token = localStorage.getItem("token") || "";
+    }
     try {
       const res = await axios.get<ProductsResponse>(`${BACKEND_URL}/products`, {
         headers: {
@@ -68,7 +77,7 @@ export default function Home() {
         <TopBar
           name="Shop.io"
           onThemeChange={(theme) => {
-            setTheme(theme) // Apply theme to the body
+            setTheme(theme); // Apply theme to the body
           }}
         />
       </div>
