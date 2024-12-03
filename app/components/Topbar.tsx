@@ -1,6 +1,6 @@
 "use client";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
 import LightModeIcon from "@mui/icons-material/LightMode";
@@ -19,6 +19,10 @@ const teams = [
   "LSG",
 ]; // Add team names here
 
+  
+const ISSERVER = typeof window === "undefined";
+
+
 export function TopBar({
   name,
   onThemeChange,
@@ -29,6 +33,14 @@ export function TopBar({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedTheme, setSelectedTheme] = useState(teams[0]); // Default theme
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // For theme dropdown
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Manage login state
+
+  useEffect(() => {
+    if (!ISSERVER) {
+      const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token); // Update login state based on token presence
+    }
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -40,13 +52,28 @@ export function TopBar({
     setIsDropdownOpen(false); // Close dropdown after selection
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Clear token from localStorage
+    setIsLoggedIn(false); // Update state
+    window.location.reload();
+
+  };
+
   return (
     <div className="flex justify-between px-5 pt-5 text-xl md:py-5 relative">
-      <div className="p-2 font-bold">Shop.io</div>
+      <Link href={"/"} className="p-2 font-bold text-tBase">
+        Shop.io
+      </Link>
       <div className="hidden md:flex items-center space-x-4">
-        <Link href={"/"} className="p-2 text-tBase">
-          Hi, {name}
-        </Link>
+        {!isLoggedIn ? (
+          <Link href={"/login"} className="p-2 text-tBase">
+            Login/Signup
+          </Link>
+        ) : (
+          <button onClick={handleLogout} className="p-2 text-tBase">
+            Logout
+          </button>
+        )}
         <div className="relative">
           {/* Dropdown Button */}
           <div
@@ -70,8 +97,8 @@ export function TopBar({
             </div>
           )}
         </div>
-        <Link href={"/about"} className="p-2 text-tBase">
-          About
+        <Link href={"/products"} className="p-2 text-tBase">
+          Products
         </Link>
         <Link href={"/cart"} className="p-2 text-tBase">
           Cart
@@ -121,12 +148,24 @@ export function TopBar({
                   </div>
                 )}
               </div>
-              <Link href={"/about"} className="text-left text-tBase">
-                About
+              <Link href={"/products"} className="text-left text-tBase">
+                Products
               </Link>
               <Link href={"/cart"} className="text-left text-tBase">
                 Cart
               </Link>
+              {!isLoggedIn ? (
+                <Link href={"/login"} className="text-left text-tBase">
+                  Login/Signup
+                </Link>
+              ) : (
+                <button
+                  onClick={handleLogout}
+                  className="text-left text-tBase"
+                >
+                  Logout
+                </button>
+              )}
             </div>
           </div>
         </div>
