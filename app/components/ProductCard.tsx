@@ -33,7 +33,7 @@ export function ProductCard({
         className={twMerge("object-cover rounded-md", className)}
       />
       <div className="">
-        <h1 className="font-bold  text-xl">{name || <Skeleton />}</h1>
+        <h1 className="font-bold  text-xl text-tBase">{name || <Skeleton />}</h1>
         <h1>{stars}</h1>
         <h1 className="font-bold">{price || <Skeleton />}</h1>
       </div>

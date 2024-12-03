@@ -14,19 +14,19 @@ export function TopBar({ name }: { name: string }) {
 
   return (
     <div className="flex justify-between px-5 pt-5 text-xl md:py-5">
-      <div className="p-2 font-bold">{name}</div>
+      <div className="p-2 font-bold">Shop.io</div>
       <div className="hidden space-x-4 md:flex">
-        <Link href={"/theblog"} className="p-2">
-          Blog
+        <Link href={"/"} className="p-2 text-tBase">
+          Hi, {name}
         </Link>
-        <Link href="/projects" className="p-2">
-          Projects
+        <Link href="/" className="p-2 text-tBase">
+          Theme
         </Link>
-        <Link href={"/about"} className="p-2">
+        <Link href={"/about"} className="p-2 text-tBase">
           About
         </Link>
-        <Link href={"newsletter"} className="p-2">
-          Newsletter
+        <Link href={"/cart"} className="p-2 text-tBase">
+          Cart
         </Link>
         <div className="flex space-x-2 py-3">
           <NightlightRoundIcon />
@@ -42,24 +42,24 @@ export function TopBar({ name }: { name: string }) {
         <div className="fixed inset-0 z-50 flex justify-end bg-gray-900 bg-opacity-75">
           <div className="h-full w-64 bg-white p-6 shadow-lg">
             <div className="mb-6 flex items-center justify-between">
-              <h2 className="text-lg font-bold">{name}</h2>
+              <h2 className="text-lg font-bold text-tBase">{name}</h2>
               <CloseIcon
                 onClick={toggleMenu}
                 className="cursor-pointer text-gray-700"
               />
             </div>
             <div className="flex flex-col space-y-4">
-              <Link href={"/theblog"} className="text-left">
-                Blog
+              <Link href={"/"} className="text-left text-tBase">
+                Hi, {name}
               </Link>
-              <Link href={"/projects"} className="text-left">
-                Projects
+              <Link href={"/"} className="text-left text-tBase">
+                Theme
               </Link>
-              <Link href={"/about"} className="text-left">
+              <Link href={"/about"} className="text-left text-tBase">
                 About
               </Link>
-              <Link href={"/newsletter"} className="text-left">
-                Newsletter
+              <Link href={"/cart"} className="text-left text-tBase">
+                Cart
               </Link>
             </div>
           </div>

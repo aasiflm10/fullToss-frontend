@@ -16,7 +16,9 @@ interface ProductsResponse {
   products: Product[];
 }
 
+const themes = ["CSK", "MI", "RCB", "KKR","SRH","DC", "PBKS", "RR", "GT", "LSG"];
 export default function Home() {
+  const [theme , setTheme] = useState<string>('');
   // const products: Product[] = [];
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -49,15 +51,28 @@ export default function Home() {
   }, [products]);
 
   return (
-    <div className="">
+    <div className={`theme-${theme}`}>
       <div>
         <TopBar name="Shop.io" />
       </div>
 
-      <div className="grid grid-cols-12 bg-gray-100 p-4 lg:px-[100px] px-4">
+
+      <div className="flex flex-col">
+        <h3 className="font-semibold">Select theme:</h3>
+        <div className="flex gap-4">
+          {themes.map((t : string) => (
+            <div className="cursor-pointer" key={t} onClick={() => setTheme(t)}>
+              {t}
+            </div>
+          ))}
+        </div>
+      </div>
+
+
+      <div className={`grid grid-cols-12 bg-gray-200 p-4 lg:px-[100px] px-4`}>
         <div className="lg:col-span-6 col-span-12 space-y-8">
-          <h1 className="text-6xl">FIND CLOTHES THAT MATCH YOUR STYLE</h1>
-          <h1 className="text-base">
+          <h1 className="text-6xl text-tBase">FIND CLOTHES THAT MATCH YOUR STYLE</h1>
+          <h1 className="text-base ">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry&apos;s standard dummy
             text ever since the 1500s, when an unknown printer took a galley of
@@ -67,7 +82,7 @@ export default function Home() {
           </h1>
           <Button
             buttonText="Buy Now"
-            className="py-4 bg-black text-white rounded-2xl w-full md:w-[210px] text-base"
+            className="py-4 bg-secondary rounded-2xl w-full md:w-[210px] text-base"
           />
           <div className="flex md:space-x-16 space-x-8">
             <HeadingAndSubText

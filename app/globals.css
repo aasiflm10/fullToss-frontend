@@ -24,37 +24,73 @@ body {
 @layer base {
   :root {
     --color-primary: hsl(0, 0%, 0%);
-    --color-secondary: hsl(0, 0%, 50%);
-    --color-text-base: hsl(0, 0%, 100%);
+    --color-secondary: hsl(220, 14.29%, 95.88%);
+    --color-text-base: hsl(0, 0%, 0%);
     --color-bg-primary: hsl(0, 0%, 100%);
   }
 
-  * {
+  /* * {
     @apply transition-colors duration-500 ease-in-out;
-  }
+  } */
 }
 
-.theme-black {
-  --color-primary: hsl(0, 0%, 0%);
-  --color-secondary: hsl(0, 0%, 50%);
+/* IPL Team Themes */
+.theme-CSK {
+  --color-primary: rgb(252, 186, 3); /* Yellow */
+  --color-secondary: rgb(3, 169, 244); /* Blue */
+  --color-text-base: rgb(252, 186, 3);
 }
 
-.theme-orange {
-  --color-primary: hsl(25, 100%, 50%);
-  --color-secondary: hsl(25, 100%, 65%);
+.theme-MI {
+  --color-primary: rgb(0, 51, 102); /* Dark Blue */
+  --color-secondary: rgb(238, 182, 63); /* Gold */
+    --color-text-base: rgb(0, 51, 102);
 }
 
-.theme-purple {
-  --color-primary: hsl(270, 100%, 50%);
-  --color-secondary: hsl(270, 100%, 75%);
+.theme-RCB {
+  --color-primary: rgb(194, 0, 0); /* Red */
+  --color-secondary: rgb(0, 0, 0); /* Black */
+    --color-text-base: rgb(194, 0, 0);
 }
 
-.theme-green {
-  --color-primary: hsl(120, 100%, 35%);
-  --color-secondary: hsl(120, 100%, 45%);
+.theme-KKR {
+  --color-primary: rgb(74, 20, 140); /* Purple */
+  --color-secondary: rgb(224, 176, 255); /* Gold */
+    --color-text-base: rgb(74, 20, 140);
 }
 
-.theme-blue {
-  --color-primary: hsl(220, 100%, 50%);
-  --color-secondary: hsl(220, 100%, 75%);
+.theme-SRH {
+  --color-primary: rgb(238, 116, 41); /* Orange */
+  --color-secondary: rgb(0, 0, 0); /* Black */
+    --color-text-base: rgb(238, 116, 41);
+}
+
+.theme-DC {
+  --color-primary: rgb(0, 82, 155); /* Blue */
+  --color-secondary: rgb(221, 0, 49); /* Red */
+  --color-text-base: rgb(0, 82, 155);
+}
+
+.theme-PBKS {
+  --color-primary: rgb(196, 18, 48); /* Red */
+  --color-secondary: rgb(211, 211, 211); /* Silver */
+    --color-text-base: rgb(196, 18, 48);
+}
+
+.theme-RR {
+  --color-primary: rgb(236, 64, 122); /* Pink */
+  --color-secondary: rgb(28, 27, 150); /* Royal Blue */
+    --color-text-base: rgb(236, 64, 122) ;
+}
+
+.theme-GT {
+  --color-primary: rgb(15, 42, 104); /* Navy Blue */
+  --color-secondary: rgb(185, 151, 91); /* Gold */
+    --color-text-base: rgb(15, 42, 104);
+}
+
+.theme-LSG {
+  --color-primary: rgb(2, 135, 84); /* Green */
+  --color-secondary: rgb(255, 223, 0); /* Yellow */
+    --color-text-base: rgb(2, 135, 84);
 }

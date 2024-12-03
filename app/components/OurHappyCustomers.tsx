@@ -41,7 +41,7 @@ export function OurHappyCustomers() {
 
   return (
     <div className="space-y-8 lg:px-[100px] px-4 mt-20">
-      <h1 className=" flex justify-center font-bold text-5xl">OUR HAPPY CUSTOMERS</h1>
+      <h1 className=" flex justify-center font-bold text-5xl text-tBase">OUR HAPPY CUSTOMERS</h1>
       <ReviewCarousel reviews={reviews} />
     </div>
   );
