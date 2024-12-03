@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 interface SignupInput {
   name: string;
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -25,14 +25,14 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
   const router = useRouter();
   const [postInputs, setPostInputs] = useState<SignupInput>({
     name: "",
-    username: "",
+    email: "",
     password: "",
   });
 
   async function sendRequest() {
     try {
       const response = await axios.post<ResponseTypes>(
-        `${BACKEND_URL}/api/v1/${type === "signup" ? "register" : "login"}`,
+        `${BACKEND_URL}/${type === "signup" ? "register" : "login"}`,
         postInputs
       );
       const data = response.data;
@@ -78,12 +78,12 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
               />
             ) : null}
             <LabelledInput
-              label="Username"
+              label="email"
               placeholder="email@gmail.com"
               onChange={(e) => {
                 setPostInputs({
                   ...postInputs,
-                  username: e.target.value,
+                  email: e.target.value,
                 });
               }}
             />
