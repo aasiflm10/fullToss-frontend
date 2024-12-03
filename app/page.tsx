@@ -16,15 +16,27 @@ interface ProductsResponse {
   products: Product[];
 }
 
-const themes = ["CSK", "MI", "RCB", "KKR","SRH","DC", "PBKS", "RR", "GT", "LSG"];
+const themes = [
+  "CSK",
+  "MI",
+  "RCB",
+  "KKR",
+  "SRH",
+  "DC",
+  "PBKS",
+  "RR",
+  "GT",
+  "LSG",
+];
 export default function Home() {
-  const [theme , setTheme] = useState<string>('');
+  const team = localStorage.getItem("team");
+  const [theme, setTheme] = useState<string>(team as string);
+
   // const products: Product[] = [];
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   async function getProducts() {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzMyOTg1NDcyfQ.fh3ohpiQ10V9whL7DvHCi7B5uvgMS2CNqRLd_qnQKak";
+    const token = localStorage.getItem("token");
     try {
       const res = await axios.get<ProductsResponse>(`${BACKEND_URL}/products`, {
         headers: {
@@ -53,14 +65,18 @@ export default function Home() {
   return (
     <div className={`theme-${theme}`}>
       <div>
-        <TopBar name="Shop.io" />
+        <TopBar
+          name="Shop.io"
+          onThemeChange={(theme) => {
+            setTheme(theme) // Apply theme to the body
+          }}
+        />
       </div>
-
 
       <div className="flex flex-col">
         <h3 className="font-semibold">Select theme:</h3>
         <div className="flex gap-4">
-          {themes.map((t : string) => (
+          {themes.map((t: string) => (
             <div className="cursor-pointer" key={t} onClick={() => setTheme(t)}>
               {t}
             </div>
@@ -68,10 +84,11 @@ export default function Home() {
         </div>
       </div>
 
-
       <div className={`grid grid-cols-12 bg-gray-200 p-4 lg:px-[100px] px-4`}>
         <div className="lg:col-span-6 col-span-12 space-y-8">
-          <h1 className="text-6xl text-tBase">FIND CLOTHES THAT MATCH YOUR STYLE</h1>
+          <h1 className="text-6xl text-tBase">
+            FIND CLOTHES THAT MATCH YOUR STYLE
+          </h1>
           <h1 className="text-base ">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry&apos;s standard dummy

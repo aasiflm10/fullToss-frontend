@@ -5,23 +5,71 @@ import CloseIcon from "@mui/icons-material/Close";
 import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import Link from "next/link";
-export function TopBar({ name }: { name: string }) {
+
+const teams = [
+  "CSK",
+  "MI",
+  "RCB",
+  "KKR",
+  "SRH",
+  "DC",
+  "PBKS",
+  "RR",
+  "GT",
+  "LSG",
+]; // Add team names here
+
+export function TopBar({
+  name,
+  onThemeChange,
+}: {
+  name: string;
+  onThemeChange: (theme: string) => void;
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedTheme, setSelectedTheme] = useState(teams[0]); // Default theme
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // For theme dropdown
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleThemeChange = (theme: string) => {
+    setSelectedTheme(theme);
+    onThemeChange(theme);
+    setIsDropdownOpen(false); // Close dropdown after selection
+  };
+
   return (
-    <div className="flex justify-between px-5 pt-5 text-xl md:py-5">
+    <div className="flex justify-between px-5 pt-5 text-xl md:py-5 relative">
       <div className="p-2 font-bold">Shop.io</div>
-      <div className="hidden space-x-4 md:flex">
+      <div className="hidden md:flex items-center space-x-4">
         <Link href={"/"} className="p-2 text-tBase">
           Hi, {name}
         </Link>
-        <Link href="/" className="p-2 text-tBase">
-          Theme
-        </Link>
+        <div className="relative">
+          {/* Dropdown Button */}
+          <div
+            className="p-2 cursor-pointer text-tBase"
+            onClick={() => setIsDropdownOpen((prev) => !prev)}
+          >
+            Theme: {selectedTheme}
+          </div>
+          {/* Dropdown Menu */}
+          {isDropdownOpen && (
+            <div className="absolute mt-2 bg-white shadow-lg rounded-md z-10">
+              {teams.map((team) => (
+                <div
+                  key={team}
+                  onClick={() => handleThemeChange(team)}
+                  className="p-2 cursor-pointer hover:bg-gray-100"
+                >
+                  {team}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
         <Link href={"/about"} className="p-2 text-tBase">
           About
         </Link>
@@ -52,9 +100,27 @@ export function TopBar({ name }: { name: string }) {
               <Link href={"/"} className="text-left text-tBase">
                 Hi, {name}
               </Link>
-              <Link href={"/"} className="text-left text-tBase">
-                Theme
-              </Link>
+              <div className="relative">
+                <div
+                  className="p-2 text-left text-tBase cursor-pointer"
+                  onClick={() => setIsDropdownOpen((prev) => !prev)}
+                >
+                  Theme: {selectedTheme}
+                </div>
+                {isDropdownOpen && (
+                  <div className="mt-2 flex flex-col space-y-2">
+                    {teams.map((team) => (
+                      <div
+                        key={team}
+                        onClick={() => handleThemeChange(team)}
+                        className="p-2 cursor-pointer hover:bg-gray-100"
+                      >
+                        {team}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
               <Link href={"/about"} className="text-left text-tBase">
                 About
               </Link>
