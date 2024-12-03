@@ -16,18 +16,6 @@ interface ProductsResponse {
   products: Product[];
 }
 
-const themes = [
-  "CSK",
-  "MI",
-  "RCB",
-  "KKR",
-  "SRH",
-  "DC",
-  "PBKS",
-  "RR",
-  "GT",
-  "LSG",
-];
 
 const ISSERVER = typeof window === "undefined";
 
@@ -82,16 +70,6 @@ export default function Home() {
         />
       </div>
 
-      <div className="flex flex-col">
-        <h3 className="font-semibold">Select theme:</h3>
-        <div className="flex gap-4">
-          {themes.map((t: string) => (
-            <div className="cursor-pointer" key={t} onClick={() => setTheme(t)}>
-              {t}
-            </div>
-          ))}
-        </div>
-      </div>
 
       <div className={`grid grid-cols-12 bg-gray-200 p-4 lg:px-[100px] px-4`}>
         <div className="lg:col-span-6 col-span-12 space-y-8">
