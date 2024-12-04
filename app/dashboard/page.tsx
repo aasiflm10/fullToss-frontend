@@ -2,7 +2,7 @@
 import { TopBar } from "../components/Topbar";
 import { Button } from "../components/Button";
 import { HeadingAndSubText } from "../components/HeadingAndSubText";
-import { Image } from "../components/Image";
+import { ImageComponent } from "../components/Image";
 import { ItemsTrayComponent, Product } from "../components/ItemsTrayComponent";
 import { Footer } from "../components/Footer";
 import { BrandsTray } from "../components/BrandsTray";
@@ -105,7 +105,7 @@ export default function Home() {
         </div>
 
         <div className="lg:col-span-6 col-span-12">
-          <Image
+          <ImageComponent
             src={"https://i.ibb.co/7Y09R86/kolkata-knight-riders-seeklogo.png"}
             className="h-[500px]"
           />

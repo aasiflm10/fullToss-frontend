@@ -43,8 +43,11 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(`team logo for ${team} : ${teamLogo}`);
-    setTeamLogo(teamLogos[theme]);
+    if (theme && teamLogos[theme]) {
+      setTeamLogo(teamLogos[theme]);
+    } else {
+      setTeamLogo("https://plus.unsplash.com/premium_photo-1682435561654-20d84cef00eb?q=80&w=1918&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); // Fallback URL
+    }
   }, [teamLogo, theme]);
 
   async function getProducts() {
@@ -123,7 +126,7 @@ export default function Home() {
         </div>
 
         <div className="lg:col-span-6 col-span-12">
-          <ImageComponent src={`${teamLogo}`} className="h-[500px]" />
+          <ImageComponent src={teamLogo ? `${teamLogo}` : ""} className="h-[500px]" />
         </div>
       </div>
       <BrandsTray />
