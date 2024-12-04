@@ -4,8 +4,13 @@ Shop.io is a feature-rich e-commerce application developed as part of the FullTo
 
 Submitted By : Aasif Ali (aa6125405@gmail.com)
 
-## Features
 
+## Test Credentials : 
+   **email**  : test@gmail.com
+   **password**  : test
+
+
+## Features
 1. **Authentication**  
    - Sign up and sign in with secure JWT-based authentication.
 
