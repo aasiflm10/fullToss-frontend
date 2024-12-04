@@ -1,37 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shop.io
 
-## Getting Started
+Shop.io is a feature-rich e-commerce application developed as part of the FullToss Winter Internship assignment. The platform combines robust backend technologies with a modern and responsive frontend, delivering an intuitive shopping experience. 
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Authentication**  
+   - Sign up and sign in with secure JWT-based authentication.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Product Catalog**  
+   - Displays all available products with their details.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Shopping Cart**  
+   - Add products to your cart for a seamless shopping experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. **Theming**  
+   - Tailored theming based on the selected IPL team, powered by Tailwind CSS.
 
-## Learn More
+5. **Responsive Design**  
+   - Fully responsive UI optimized for both mobile and desktop devices.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Backend  
+- **Framework**: Node.js with Express  
+- **Language**: TypeScript  
+- **Database**: PostgreSQL  
+- **ORM**: Prisma  
 
-## Deploy on Vercel
+### Frontend  
+- **Framework**: Next.js  
+- **Language**: TypeScript  
+- **Library**: React.js  
+- **Styling**: Tailwind CSS  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# fullToss-frontend
+## Installation and Setup
+
+### Prerequisites
+- Node.js and npm installed
+- PostgreSQL database set up
+- Environment variables configured in `.env`
+
+### Backend Setup
+1. Clone the repository and navigate to the `backend` directory:  
+   ```bash
+   git clone <repo-url>
+   cd backend
+```bash 
