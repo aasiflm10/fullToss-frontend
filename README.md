@@ -1,4 +1,6 @@
-# Shop.io
+# Shop.io 
+
+### (FullToss Assignment 1 frontend )
 
 Shop.io is a feature-rich e-commerce application developed as part of the FullToss Winter Internship assignment. The platform combines robust backend technologies with a modern and responsive frontend.
 
