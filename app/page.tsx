@@ -2,7 +2,7 @@
 import { TopBar } from "./components/Topbar";
 import { Button } from "./components/Button";
 import { HeadingAndSubText } from "./components/HeadingAndSubText";
-import { Image } from "./components/Image";
+import { ImageComponent } from "./components/Image";
 import { ItemsTrayComponent, Product } from "./components/ItemsTrayComponent";
 import { Footer } from "./components/Footer";
 import { BrandsTray } from "./components/BrandsTray";
@@ -44,7 +44,9 @@ export default function Home() {
 
   useEffect(() => {
     console.log(`team logo for ${team} : ${teamLogo}`);
+    setTeamLogo(teamLogos[theme]);
   }, [teamLogo, theme]);
+
   async function getProducts() {
     let token: string = "";
     if (!ISSERVER) {
@@ -121,7 +123,7 @@ export default function Home() {
         </div>
 
         <div className="lg:col-span-6 col-span-12">
-          <Image src={`${teamLogo}`} className="h-[500px]" />
+          <ImageComponent src={`${teamLogo}`} className="h-[500px]" />
         </div>
       </div>
       <BrandsTray />

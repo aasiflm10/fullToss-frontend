@@ -1,16 +1,18 @@
+"use client"
 import { twMerge } from "tailwind-merge";
 import React, { useState, useEffect } from "react";
+import Image from 'next/image'
+ 
 
-export function Image({ className, src }: { className: string; src: string }) {
+export function ImageComponent({ className, src }: { className: string; src: string }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true); // Reset loading state whenever src changes
+    console.log(src);
   }, [src]);
 
-  setTimeout(() => {
-    setLoading(false);
-  }, 5000);
+
   return (
     <div className="relative">
       {loading && (
@@ -18,7 +20,9 @@ export function Image({ className, src }: { className: string; src: string }) {
           <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
       )}
-      <img
+      <Image
+        width={500}
+        height={500}
         className={twMerge(
           className,
           "object-cover w-full",

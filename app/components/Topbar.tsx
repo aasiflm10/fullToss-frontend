@@ -31,13 +31,15 @@ export function TopBar({
   onThemeChange: (theme: string) => void;
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedTheme, setSelectedTheme] = useState(teams[0]); // Default theme
+  const [selectedTheme, setSelectedTheme] = useState(""); // Default theme
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // For theme dropdown
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Manage login state
 
   useEffect(() => {
     if (!ISSERVER) {
       const token = localStorage.getItem("token");
+      const team = localStorage.getItem("team");
+      setSelectedTheme(team as string);
     setIsLoggedIn(!!token); // Update login state based on token presence
     }
   }, []);
