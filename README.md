@@ -2,6 +2,12 @@
 
 Shop.io is a feature-rich e-commerce application developed as part of the FullToss Winter Internship assignment. The platform combines robust backend technologies with a modern and responsive frontend.
 
+Frontend Deployed at : https://full-toss-frontend.vercel.app/
+
+Backend Repository : https://github.com/aasiflm10/fullToss-backend.git
+
+Backend Deployed at : https://fulltoss-backend.onrender.com/
+
 Submitted By : Aasif Ali (aa6125405@gmail.com)
 
 
