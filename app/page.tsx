@@ -10,12 +10,25 @@ import { OurHappyCustomers } from "./components/OurHappyCustomers";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "@/config";
+import { userAgent } from "next/server";
 
 interface ProductsResponse {
   message: string;
   products: Product[];
 }
 
+const teamLogos: Record<string, string> = {
+  CSK: "https://i.ibb.co/9srg6FD/ipl-chennai-super-kings-seeklogo.png",
+  MI: "https://i.ibb.co/JvcHFm5/mumbai-indians-logotyp-us.png",
+  RCB: "https://i.ibb.co/7NW9qVM/rcb-seeklogo.png",
+  KKR: "https://i.ibb.co/jRftGWL/knight-riders-logotyp-us.png",
+  SRH: "https://i.ibb.co/pXD7KwB/sunrisers-hyderabad-logotyp-us.png",
+  DC: "https://i.ibb.co/7YJCLTp/delhi-capitals-logotyp-us.png",
+  PBKS: "https://i.ibb.co/6451ywS/ipl-kings-xi-punjab-seeklogo.png",
+  RR: "https://i.ibb.co/7NFrwjd/ipl-rajasthan-royals-seeklogo.png",
+  GT: "https://i.ibb.co/BtfjWQC/gujarat-titans-seeklogo.png",
+  LSG: "https://i.ibb.co/k0G00Tq/lucknow-super-giants-seeklogo.png",
+};
 
 const ISSERVER = typeof window === "undefined";
 
@@ -25,10 +38,14 @@ export default function Home() {
     team = localStorage.getItem("team") || "";
   }
   const [theme, setTheme] = useState<string>(team as string);
-
+  const [teamLogo, setTeamLogo] = useState<string>(teamLogos[theme]);
   // const products: Product[] = [];
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    console.log(`team logo for ${team} : ${teamLogo}`);
+  }, [teamLogo, theme]);
   async function getProducts() {
     let token: string = "";
     if (!ISSERVER) {
@@ -66,10 +83,10 @@ export default function Home() {
           name="Aasif"
           onThemeChange={(theme) => {
             setTheme(theme); // Apply theme to the body
+            setTeamLogo(teamLogos[theme]);
           }}
         />
       </div>
-
 
       <div className={`grid grid-cols-12 bg-gray-200 p-4 lg:px-[100px] px-4`}>
         <div className="lg:col-span-6 col-span-12 space-y-8">
@@ -105,10 +122,7 @@ export default function Home() {
         </div>
 
         <div className="lg:col-span-6 col-span-12">
-          <Image
-            src={"https://i.ibb.co/7Y09R86/kolkata-knight-riders-seeklogo.png"}
-            className="h-[500px]"
-          />
+          <Image src={`${teamLogo}`} className="h-[500px]" />
         </div>
       </div>
       <BrandsTray />

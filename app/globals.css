@@ -49,7 +49,7 @@ body {
 
 .theme-RCB {
   --color-primary: rgb(194, 0, 0); /* Red */
-  --color-secondary: rgb(0, 0, 0); /* Black */
+  --color-secondary: rgb(194, 0, 0); /* Black */
     --color-text-base: rgb(194, 0, 0);
 }
 
@@ -61,7 +61,7 @@ body {
 
 .theme-SRH {
   --color-primary: rgb(238, 116, 41); /* Orange */
-  --color-secondary: rgb(0, 0, 0); /* Black */
+  --color-secondary: rgb(238, 116, 41); /* Black */
     --color-text-base: rgb(238, 116, 41);
 }
 
@@ -79,7 +79,7 @@ body {
 
 .theme-RR {
   --color-primary: rgb(236, 64, 122); /* Pink */
-  --color-secondary: rgb(28, 27, 150); /* Royal Blue */
+  --color-secondary: rgb(236, 64, 122); /* Royal Blue */
     --color-text-base: rgb(236, 64, 122) ;
 }
 
