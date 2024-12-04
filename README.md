@@ -61,8 +61,8 @@ Submitted By : Aasif Ali (aa6125405@gmail.com)
 ### Backend Setup
 1. Clone the repository and navigate to the `backend` directory:  
    ```bash
-   git clone <repo-url>
-   cd backend
+   git clone https://github.com/aasiflm10/fullToss-frontend.git
+   cd fullToss-frontend
 
 2. Install Dependencies: 
    ```bash
