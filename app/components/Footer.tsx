@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { C } from "./icons/C";
 
 export function Footer() {
@@ -7,13 +8,11 @@ export function Footer() {
         <div className="mt-[3px]">
           <C />
         </div>
-        <p>2023</p>
+        <p>2024</p>
       </div>
-      <button className="text-xl">Twitter</button>
-      <button className="text-xl">LinkedIn</button>
-      <button className="text-xl">Email</button>
-      <button className="text-xl">feed</button>
-      <button className="text-xl">Add to Feedly</button>
+      <Link href={"https://www.linkedin.com/in/aasif-ali-a58638229/"} className="text-xl">LinkedIn</Link>
+      <Link href={"https://x.com/Aasif_1007"} className="text-xl">Twitter</Link>
+      <Link href={"mailto:aa6125405@gmail.com"} className="text-xl">Email</Link>
     </div>
   );
 }
