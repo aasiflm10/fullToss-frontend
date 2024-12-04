@@ -2,8 +2,6 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState, useEffect } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
-import LightModeIcon from "@mui/icons-material/LightMode";
 import Link from "next/link";
 
 const teams = [

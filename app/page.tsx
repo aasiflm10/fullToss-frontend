@@ -145,7 +145,7 @@ export default function Home() {
           <h1 className="text-base ">
             Our online clothing and shoe store offers a vast collection of
             stylish and high-quality apparel and footwear for all ages and
-            occasions. Whether you're looking for the latest fashion trends,
+            occasions. Whether you&apos;re looking for the latest fashion trends,
             timeless classics, or comfortable everyday wear, we have something
             for everyone. From casual wear to formal attire, athletic gear to
             designer shoes, our wide range ensures that you find the perfect fit
