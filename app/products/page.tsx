@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "@/config";
 import { TopBar } from "../components/Topbar";
+import { Footer } from "../components/Footer";
 
 interface Product {
   id: number;
@@ -159,6 +160,7 @@ export default function ProductsGrid() {
           </div>
         ))}
       </div>
+      <Footer/>
     </div>
   );
 }

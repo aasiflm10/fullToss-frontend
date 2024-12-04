@@ -10,7 +10,6 @@ import { OurHappyCustomers } from "./components/OurHappyCustomers";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "@/config";
-import { userAgent } from "next/server";
 
 interface ProductsResponse {
   message: string;

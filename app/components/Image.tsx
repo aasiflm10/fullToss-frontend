@@ -1,19 +1,16 @@
 import { twMerge } from "tailwind-merge";
 import React, { useState, useEffect } from "react";
 
-export function Image({
-  className,
-  src,
-}: {
-  className: string;
-  src: string;
-}) {
+export function Image({ className, src }: { className: string; src: string }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true); // Reset loading state whenever src changes
   }, [src]);
 
+  setTimeout(() => {
+    setLoading(false);
+  }, 5000);
   return (
     <div className="relative">
       {loading && (
