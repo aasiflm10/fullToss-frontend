@@ -1,6 +1,8 @@
 # Shop.io
 
-Shop.io is a feature-rich e-commerce application developed as part of the FullToss Winter Internship assignment. The platform combines robust backend technologies with a modern and responsive frontend, delivering an intuitive shopping experience. 
+Shop.io is a feature-rich e-commerce application developed as part of the FullToss Winter Internship assignment. The platform combines robust backend technologies with a modern and responsive frontend.
+
+Submitted By : Aasif Ali (aa6125405@gmail.com)
 
 ## Features
 
@@ -49,4 +51,14 @@ Shop.io is a feature-rich e-commerce application developed as part of the FullTo
    ```bash
    git clone <repo-url>
    cd backend
-```bash 
+
+2. Install Dependencies: 
+   ```bash
+   npm install
+
+3. Set up environment variables. See env.example for reference.
+
+4. Run the Project : 
+   ```bash
+   npm run dev
+
