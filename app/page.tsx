@@ -10,6 +10,7 @@ import { OurHappyCustomers } from "./components/OurHappyCustomers";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "@/config";
+import Link from "next/link";
 
 interface ProductsResponse {
   message: string;
@@ -36,17 +37,23 @@ export default function Home() {
   if (!ISSERVER) {
     team = localStorage.getItem("team") || "";
   }
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const [theme, setTheme] = useState<string>(team as string);
   const [teamLogo, setTeamLogo] = useState<string>(teamLogos[theme]);
-  // const products: Product[] = [];
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showCard, setShowCard] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     if (theme && teamLogos[theme]) {
       setTeamLogo(teamLogos[theme]);
     } else {
-      setTeamLogo("https://plus.unsplash.com/premium_photo-1682435561654-20d84cef00eb?q=80&w=1918&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); // Fallback URL
+      setTeamLogo(
+        "https://plus.unsplash.com/premium_photo-1682435561654-20d84cef00eb?q=80&w=1918&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      ); // Fallback URL
     }
   }, [teamLogo, theme]);
 
@@ -54,6 +61,10 @@ export default function Home() {
     let token: string = "";
     if (!ISSERVER) {
       token = localStorage.getItem("token") || "";
+      setIsLoggedIn(!!token);
+      if (!token) {
+        setShowCard(true);
+      }
     }
     try {
       const res = await axios.get<ProductsResponse>(`${BACKEND_URL}/products`, {
@@ -76,9 +87,10 @@ export default function Home() {
     getProducts();
   }, []);
 
-  useEffect(() => {
-    console.log("Updated Products:", products);
-  }, [products]);
+  if (!isMounted) {
+    // Avoid rendering until hydration completes
+    return null;
+  }
 
   return (
     <div className={`theme-${theme}`}>
@@ -92,18 +104,55 @@ export default function Home() {
         />
       </div>
 
+      {!isLoggedIn && showCard && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="relative bg-white p-6 rounded-lg shadow-lg w-full max-w-md text-center">
+            <button
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              onClick={() => setShowCard(false)}
+            >
+              ✕
+            </button>
+            <h2 className="text-2xl font-semibold text-gray-800">
+              Welcome to Shop.io!
+            </h2>
+            <p className="text-gray-600 mt-4">
+              Please log in or sign up to access exclusive features.
+            </p>
+            <div className="flex justify-center space-x-4 mt-6">
+              <Link
+                href="/login"
+                className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+              >
+                Log In
+              </Link>
+              <Link
+                href="/register"
+                className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+              >
+                Sign Up
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className={`grid grid-cols-12 bg-gray-200 p-4 lg:px-[100px] px-4`}>
         <div className="lg:col-span-6 col-span-12 space-y-8">
           <h1 className="text-6xl text-tBase">
             FIND CLOTHES THAT MATCH YOUR STYLE
           </h1>
           <h1 className="text-base ">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry&apos;s standard dummy
-            text ever since the 1500s, when an unknown printer took a galley of
-            type and scrambled it to make a type specimen book. It has survived
-            not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged
+            Our online clothing and shoe store offers a vast collection of
+            stylish and high-quality apparel and footwear for all ages and
+            occasions. Whether you're looking for the latest fashion trends,
+            timeless classics, or comfortable everyday wear, we have something
+            for everyone. From casual wear to formal attire, athletic gear to
+            designer shoes, our wide range ensures that you find the perfect fit
+            and style. Enjoy a seamless shopping experience with easy
+            navigation, secure payment options, and fast delivery. Discover your
+            next favorite outfit or pair of shoes at unbeatable prices, all from
+            the comfort of your home.
           </h1>
           <Button
             buttonText="Buy Now"
@@ -126,7 +175,10 @@ export default function Home() {
         </div>
 
         <div className="lg:col-span-6 col-span-12">
-          <ImageComponent src={teamLogo ? `${teamLogo}` : ""} className="h-[500px]" />
+          <ImageComponent
+            src={teamLogo ? `${teamLogo}` : ""}
+            className="h-[500px]"
+          />
         </div>
       </div>
       <BrandsTray />

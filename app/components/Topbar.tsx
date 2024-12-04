@@ -56,9 +56,9 @@ export function TopBar({
 
   const handleLogout = () => {
     localStorage.removeItem("token"); // Clear token from localStorage
+    localStorage.removeItem("team");
     setIsLoggedIn(false); // Update state
     window.location.reload();
-
   };
 
   return (
@@ -105,10 +105,6 @@ export function TopBar({
         <Link href={"/cart"} className="p-2 text-tBase">
           Cart
         </Link>
-        <div className="flex space-x-2 py-3">
-          <NightlightRoundIcon />
-          <LightModeIcon />
-        </div>
       </div>
       <div className="md:hidden">
         <MenuIcon onClick={toggleMenu} className="cursor-pointer" />
