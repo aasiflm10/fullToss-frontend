@@ -44,7 +44,7 @@ Submitted By : Aasif Ali (aa6125405@gmail.com)
 ### Prerequisites
 - Node.js and npm installed
 - PostgreSQL database set up
-- Environment variables configured in `.env`
+- change the BACKEND_URL in config.ts if running the backend locally. For reference see Step 3.
 
 ### Backend Setup
 1. Clone the repository and navigate to the `backend` directory:  
@@ -56,7 +56,7 @@ Submitted By : Aasif Ali (aa6125405@gmail.com)
    ```bash
    npm install
 
-3. Set up environment variables. See env.example for reference.
+3. If you are running the Backend locally, then dont forget to change the BACKEND_URL in config.ts in the root directory.
 
 4. Run the Project : 
    ```bash
